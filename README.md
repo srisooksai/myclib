@@ -3,10 +3,10 @@ My C library
 
 To install
 
-git clon https://github.com/srisooksai/myclib.git
+$ git clone https://github.com/srisooksai/myclib.git
 
-cd myclib
+$ cd myclib
 
-sudo chmod +x install.sh
+$ sudo chmod +x install.sh
 
-./install.sh
+$ ./install.sh
