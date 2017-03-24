@@ -1,0 +1,28 @@
+#include <stdlib.h>
+#include <math.h>
+#include <stdio.h>
+#include <string.h>
+#include "mydev.h"
+
+void gen_evalpoints(char *filename, 
+                    double str_x, double end_x, double stp_x, 
+                    double str_y, double end_y, double stp_y, 
+                    double str_z, double end_z, double stp_z){
+   double i, j, k;   
+   FILE *fp;
+   printf("Generating the evaluation points\n");
+   fp = fopen(filename, "w");
+   
+   for(i=str_x; i <= end_x; i = i + stp_x ){
+   	for(j=str_y; j <= end_y; j = j + stp_y ){  
+   	   	for(k=str_z; k <= end_z; k = k + stp_z ){   
+   	   	  fprintf(fp, "%f %f %f\n",i,j,k);  
+   	   	  //printf("%f %f %f\n",i,j,k);    
+            }       
+      }
+   }
+
+   fclose(fp);
+   printf("Finished generating the evaluation points\n");
+}
+

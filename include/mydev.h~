@@ -32,7 +32,6 @@ void ctest2(int *);
 /*--------------------------------------------------------------------------*/
 char* csvgetfield(char* line, int num, char* delim);
 
-
 /*-------------------------------------------------------------------------*/
 /**
   @brief    Generate the evaluation points for scuff-em simulation.

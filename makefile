@@ -12,11 +12,11 @@ OFLAGES = -Wall -fPIC -c
 
 LFLAGES = -shared -Wl
 
-_OBJS = ctest1.o ctest2.o gnuplot_i.o csvgetfield.o
-OBJS = $(patsubst %,$(ODIR)/%,$(_OBJS))
+SRC = $(wildcard $(SDIR)/*.c)
+OBJS = $(patsubst $(SDIR)/%.c, $(ODIR)/%.o, $(SRC))
 
 $(ODIR)/%.o: $(SDIR)/%.c
-	$(CC) $(OFLAGES) $(INC) -o $@ $< $(CFLAGS) 
+	$(CC) $(OFLAGES) $(INC) $< -o $@  $(CFLAGS) 
 
 all: $(OBJS) 
 	$(CC) $(LFLAGES),-soname,$(LIBso1) -o $(LIBso1o) $^

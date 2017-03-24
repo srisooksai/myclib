@@ -1,37 +1,8 @@
-#ifndef MYDEV_H
-#define MYDEV_H
-
-#include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
+#include <stdio.h>
 #include <string.h>
-#include <errno.h>
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-void ctest1(int *);
-void ctest2(int *);
-
-
-/*-------------------------------------------------------------------------*/
-/**
-  @brief    Get the string of the column specified by "num" variable.
-  @param    line String of a line from file
-  @param    num Number of column/field
-  @param    delim  Dilimiter.
-
-  This function get the string of the column/field specified by "num" variable 
-  by consider the delimeter definded "delim" parameter.
-
-  Examples:
-  @code
-  csvgetfield(line, 3, ",");
-  @endcode
- */
-/*--------------------------------------------------------------------------*/
-char* csvgetfield(char* line, int num, char* delim);
-
+#include "mydev.h"
 
 /*-------------------------------------------------------------------------*/
 /**
@@ -69,13 +40,27 @@ char* csvgetfield(char* line, int num, char* delim);
   @endcode
  */
 /*--------------------------------------------------------------------------*/
+
+
 void gen_evalpoints(char *filename, 
                     double str_x, double end_x, double stp_x, 
                     double str_y, double end_y, double stp_y, 
-                    double str_z, double end_z, double stp_z);
+                    double str_z, double end_z, double stp_z){
+   double i, j, k;   
+   FILE *fp;
+   printf("Generating the evaluation points\n");
+   fp = fopen(filename, "w");
+   
+   for(i=str_x; i <= end_x; i = i + stp_x ){
+   	for(j=str_y; j <= end_y; j = j + stp_y ){  
+   	   	for(k=str_z; k <= end_z; k = k + stp_z ){   
+   	   	  fprintf(fp, "%f %f %f\n",i,j,k);  
+   	   	  //printf("%f %f %f\n",i,j,k);    
+            }       
+      }
+   }
 
-#ifdef __cplusplus
+   fclose(fp);
+   printf("Finished generating the evaluation points\n");
 }
-#endif
 
-#endif
