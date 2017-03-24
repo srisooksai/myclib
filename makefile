@@ -1,10 +1,11 @@
-LDIR = $(HOME)/opt/mycpplib/lib
+LDIR = $(PWD)/lib
 LIBout = libmydev.so.1.0
 LIBso1 = $(LDIR)/libmydev.so.1
 LIBso1o = $(LDIR)/$(LIBout)
 CC = gcc
 ODIR = ./obj
 SDIR = ./src
+
 INC = -I./include
 
 OFLAGES = -Wall -fPIC -c
