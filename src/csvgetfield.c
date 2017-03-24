@@ -22,6 +22,7 @@ char* csvgetfield(char* line, int num, char* delim)
         char delimend[3];
         strcpy(delimend, delim);
         strcat(delimend, "\n");
+
 	for (tok = strtok(line, delim);
 			tok && *tok;
 			tok = strtok(NULL, delimend))
